@@ -1,12 +1,49 @@
+import React, { useState } from "react";
 import './App.css';
-import Chart from './component/Chart.js'
+import LineChart from './component/LineChart.js'
 import TreemapChart from './component/TreemapChart.js'
+import BubbleChart from './component/BubbleChart.js'
+import HeadLogo from './component/HeadLogo.js';
+import Footer from './component/Footer.js';
+import News from './component/News.js';
 
+const content = [
+  {
+    tab: "NEWS",
+    content:
+    <TreemapChart/>
+  },
+  {
+    tab: "STOCK",
+    content:
+    <LineChart/>
+    
+  }
+];
+
+const useTabs = (initialTabs, allTabs) => {
+  const [contentIndex, setContentIndex] = useState(initialTabs);
+  return {
+    contentItem: allTabs[contentIndex],
+    contentChange: setContentIndex
+  };
+};
 function App() {
+  const { contentItem , contentChange } = useTabs(0, content);
   return (
-    <div className="App">
-      <Chart/>
-      <TreemapChart/>
+
+    <div className="Frame">
+      {content.map((section, index) => (
+        <button onClick={() => contentChange(index)}>{section.tab}</button>
+      ))}
+      <br />
+      <br />
+      {contentItem.content}
+{/*       
+      <HeadLogo title = "newStock" />
+
+      <Footer/>
+    */}
     </div>
   );
 }
