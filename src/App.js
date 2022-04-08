@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import './App.css';
+
 import LineChart from './component/LineChart.js'
 import TreemapChart from './component/TreemapChart.js'
 import BubbleChart from './component/BubbleChart.js'
 import HeadLogo from './component/HeadLogo.js';
 import Footer from './component/Footer.js';
 import News from './component/News.js';
+import './App.css';
 
 const content = [
   {
@@ -32,18 +33,19 @@ function App() {
   const { contentItem , contentChange } = useTabs(0, content);
   return (
 
-    <div className="Frame">
+     <div className='Frame'>
+       <HeadLogo title = "newStock" />
+
       {content.map((section, index) => (
         <button onClick={() => contentChange(index)}>{section.tab}</button>
       ))}
       <br />
       <br />
       {contentItem.content}
-{/*       
-      <HeadLogo title = "newStock" />
-
-      <Footer/>
-    */}
+    
+      
+     <Footer/>
+    
     </div>
   );
 }
