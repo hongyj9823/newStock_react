@@ -1,52 +1,39 @@
-import React, { useState } from "react";
-
-import LineChart from './component/LineChart.js'
-import TreemapChart from './component/TreemapChart.js'
-import BubbleChart from './component/BubbleChart.js'
-import HeadLogo from './component/HeadLogo.js';
-import Footer from './component/Footer.js';
-import News from './component/News.js';
+import React, { useState, Component } from "react";
+import {BrowserRouter, Route,Routes,Link} from 'react-router-dom';
+import './index.css';
 import './App.css';
 
-const content = [
-  {
-    tab: "NEWS",
-    content:
-    <TreemapChart/>
-  },
-  {
-    tab: "STOCK",
-    content:
-    <LineChart/>
-    
-  }
-];
+import HeadLogo from './components/HeadLogo.js';
+import Footer from './components/Footer.js';
 
-const useTabs = (initialTabs, allTabs) => {
-  const [contentIndex, setContentIndex] = useState(initialTabs);
-  return {
-    contentItem: allTabs[contentIndex],
-    contentChange: setContentIndex
-  };
-};
+import NEWS from "./pages/NEWS";
+import STOCK from "./pages/STOCK";
+import NotFound from './pages/NotFound';
+
+
 function App() {
-  const { contentItem , contentChange } = useTabs(0, content);
+  
   return (
 
-     <div className='Frame'>
-       <HeadLogo title = "newStock" />
-
-      {content.map((section, index) => (
-        <button onClick={() => contentChange(index)}>{section.tab}</button>
-      ))}
-      <br />
-      <br />
-      {contentItem.content}
-    
-      
-     <Footer/>
-    
+      <div className='App'>
+       <HeadLogo title = "newStock" />  
+       
+    <div>
+        <Link to="/">NEWS</Link>
+        <Link to="/stock">STOCK</Link>
+        
+      </div>
+      <div>
+        <Routes>
+          <Route path="/" element={<NEWS />} />
+          <Route path="/stock" element={<STOCK />} />
+                </Routes>
+      </div>
+     
+       <Footer/>
+   
     </div>
+   
   );
 }
 

@@ -33,14 +33,18 @@ const Button = styled.button`
 `;
 class HeadLogo extends Component {
     render() {
+      
         return (
+
         <StyledWrap>
             <StyledHeader> { this.props.title } </StyledHeader>
-            <hr class = 'hrcss'></hr>
+            <hr className = 'hrcss'></hr>
             <Clock format = {'YYYY.MM.DD'} timezone ={'Asia/Seoul'} style = {{margin : '10px'}}/>
-            <Button>Stock</Button>
-            <Button>News</Button>
-            <hr class = 'hrcss' ></hr>
+
+            
+           {/* <Button>Stock</Button>
+            <Button>News</Button> */}
+            
         </StyledWrap>
         );
     }
