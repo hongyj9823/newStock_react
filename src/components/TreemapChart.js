@@ -139,9 +139,10 @@ export default class Chart extends PureComponent  {
     render() {
   return (
     <Treemap
-      width={400}
-      height={200}
+      width={1100}
+      height={600}
       data={data}
+     
       dataKey="size"
       ratio={4 / 3}
       stroke="#fff"

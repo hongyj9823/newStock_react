@@ -1,7 +1,14 @@
 import BubbleUI from "react-bubble-ui";
 import "react-bubble-ui/dist/index.css";
 import Child from "../BubbleChart/ChildComponent.js";
+import ReactTooltip from "react-tooltip";
+import { Link } from 'react-router-dom'
+
+
 import "../BubbleChart/myComponent.css";
+import {BrowserRouter, Route,Routes} from 'react-router-dom';
+import NEWS_DETAIL from "../BubbleChart/NEWS_DETAIL.jsx";
+//import NEWS_DETAIL from "./components/BubbleChart/NEWS_DETAIL.jsx";
 
 export default function MyComponent(props) {
     const options = {
@@ -18,20 +25,36 @@ export default function MyComponent(props) {
         compact :true,
         gravitation : 5
     };
-    const handleClick = (bub) => {
-        console.log(bub);
-    };
-    const children = props.data.map((data,i) => {
+
+    const children = props.data.map((data) => {
         return (
-        <Child data = {data} className = "child" key = {i} setClick = {handleClick}></Child>
+        <Child data = {data} className = "child" key = {data.key} ></Child>
+       
         );
     });
 
     return (
         <>
-        <BubbleUI options = {options} className = "myBubbleUI">
+        <BubbleUI options = {options} className = "myBubbleUI" >
             {children}
+         
+    
         </BubbleUI>
+        <ReactTooltip className = "eachBub" id = "bubble" effect ="solid"
+        getContent = {(dataTip) => 
+            <>
+            <h1> headline </h1>
+            <span> news summary related with {dataTip}</span>
+            <p> I can be red </p>
+            <ul>
+                <li> or blue </li>
+                <li> or black </li>
+                <li> or white </li>
+            </ul>
+            </>
+        }
+        />
         </>
+          
     );
 }
