@@ -1,6 +1,6 @@
-import "./styles.css";
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Treemap } from "recharts";
+import '../App.css' 
 
 const data = [
   {
@@ -135,19 +135,21 @@ const data = [
   }
 ];
 
-export default class Chart extends PureComponent  {
+export default class Chart extends Component  {
     render() {
-  return (
-    <Treemap
-      width={1100}
-      height={600}
-      data={data}
-     
-      dataKey="size"
-      ratio={4 / 3}
-      stroke="#fff"
-      fill="#8884d8"
-    />
-  );
-}
+        return (
+          <div style = {{ padding : '0px 20px'}}>
+            <Treemap
+              width={1100}
+              height={600}
+              data={data}
+              dataKey="size"
+              ratio={4 / 3}
+              stroke="#fff"
+              fill="#8884d8"
+              />
+          </div>
+        );
+
+    }
 }

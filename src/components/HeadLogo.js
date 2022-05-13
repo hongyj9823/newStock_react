@@ -1,6 +1,7 @@
 import React, { Component } from 'react' ;
 import Clock from 'react-live-clock';
 import styled from 'styled-components';
+import {Link} from "react-router-dom";
 import '../App.css'
 
 const StyledHeader = styled.header`
@@ -33,19 +34,15 @@ const Button = styled.button`
 `;
 class HeadLogo extends Component {
     render() {
-      
         return (
-
-        <StyledWrap>
-            <StyledHeader> { this.props.title } </StyledHeader>
-            <hr className = 'hrcss'></hr>
-            <Clock format = {'YYYY.MM.DD'} timezone ={'Asia/Seoul'} style = {{margin : '10px'}}/>
-
-            
-           {/* <Button>Stock</Button>
-            <Button>News</Button> */}
-            
-        </StyledWrap>
+            <StyledWrap>
+                <StyledHeader> { this.props.title } </StyledHeader>
+                <hr className = 'hrcss'></hr>
+                <Clock format = {'YYYY.MM.DD'} timezone ={'Asia/Seoul'} style = {{margin : '10px'}}/>
+                <Link to="/stock"><Button>Stock</Button></Link>
+                <Link to ="/"><Button>News</Button></Link>
+                <hr className = 'hrcss' ></hr>
+            </StyledWrap>
         );
     }
 }

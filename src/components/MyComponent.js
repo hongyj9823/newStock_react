@@ -1,35 +1,31 @@
 import BubbleUI from "react-bubble-ui";
 import "react-bubble-ui/dist/index.css";
-import Child from "../BubbleChart/ChildComponent.js";
 import ReactTooltip from "react-tooltip";
-import { Link } from 'react-router-dom'
+import Child from "./ChildComponent";
+import "./myComponent.css";
 
-
-import "../BubbleChart/myComponent.css";
-import {BrowserRouter, Route,Routes} from 'react-router-dom';
-import NEWS_DETAIL from "../BubbleChart/NEWS_DETAIL.jsx";
-//import NEWS_DETAIL from "./components/BubbleChart/NEWS_DETAIL.jsx";
 
 export default function MyComponent(props) {
     const options = {
         size : 200,
-        minSize : 10,
+        minSize : 30,
         gutter : 8,
         provideProps : true,
         numCols : 4,
         fringeWidth : 140,
         yRadius : 100,
-        xRadius : 250,
+        xRadius : 350,
         cornerRadius : 50,
         showGuides : false,
         compact :true,
         gravitation : 5
     };
-
+    
     const children = props.data.map((data) => {
         return (
-        <Child data = {data} className = "child" key = {data.key} ></Child>
-       
+            <>
+            <Child data = {data} className = "child" key = {data.key} ></Child>
+            </>    
         );
     });
 
@@ -37,10 +33,8 @@ export default function MyComponent(props) {
         <>
         <BubbleUI options = {options} className = "myBubbleUI" >
             {children}
-         
-    
         </BubbleUI>
-        <ReactTooltip className = "eachBub" id = "bubble" effect ="solid"
+        <ReactTooltip className = "eachBub" id = "bubble" effect ="solid" data-delayHide="0"
         getContent = {(dataTip) => 
             <>
             <h1> headline </h1>
@@ -55,6 +49,5 @@ export default function MyComponent(props) {
         }
         />
         </>
-          
     );
 }

@@ -16,7 +16,8 @@
     "react-scripts": "5.0.0",
     "react-tooltip": "^4.2.21",
     "styled-components": "^5.3.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "proxy":"http://localhost:8000"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,4 +43,6 @@
       "last 1 safari version"
     ]
   }
+
+
 }

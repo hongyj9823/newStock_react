@@ -1,4 +1,4 @@
-export const keyword = [
+export const keywords = [
     {data : "삼성전자 신저가", key : 0 , color : "#424242" },
     {data : "LG 특허수익",key : 1 , color : "#757575"},
     {data :"SK 넷제로",key : 2 ,color : "#BDBDBD"},
